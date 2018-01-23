@@ -7,6 +7,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
+import br.com.caelum.livraria.annotation.AutorException;
 import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.modelo.Autor;
 
@@ -17,9 +18,10 @@ public class AutorService {
 	private AutorDao autorDao;
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void adiciona(Autor autor) {
+	public void adiciona(Autor autor) throws AutorException{
 		autorDao.salva(autor);
-		throw new RuntimeException("Erro lançado para testar o rollback da transação");
+		throw new AutorException();
+		//throw new RuntimeException("Erro lançado para testar o rollback da transação");
 	}
 	
 	public List<Autor> todosAutores(){
