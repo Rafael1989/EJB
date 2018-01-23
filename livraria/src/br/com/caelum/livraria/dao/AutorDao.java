@@ -13,6 +13,7 @@ import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
 //@TransactionManagement(TransactionManagementType.BEAN)
+//@Interceptors({LogInterceptador.class})
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class AutorDao {
 
